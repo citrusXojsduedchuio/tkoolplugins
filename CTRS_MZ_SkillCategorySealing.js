@@ -52,13 +52,18 @@ https://www.dropbox.com/sh/30u0e9goi4yd17n/AAAaufl3dIPJPIXRT1-_wFEUa?dl=0
 		let sealCategorys = Game_Battler.prototype.sealedSkillCategorys.call(this);
 		
 		//アクターのメモ欄から取得
-		sealCategorys = sealCategorys.concat(this.actor().meta.SealCategorys.split(",") );
+		if(this.actor().meta.SealCategorys){
+			sealCategorys = sealCategorys.concat(this.actor().meta.SealCategorys.split(",") );
+		}
 		
 		//職業のメモ欄から習得
-		sealCategorys = sealCategorys.concat(this.currentClass().meta.SealCategorys.split(",") );
+		if(this.currentClass().meta.SealCategorys){
+			sealCategorys = sealCategorys.concat(this.currentClass().meta.SealCategorys.split(",") );
+		}
 		
 		//スキルのメモ欄から取得
 		sealCategorys = sealCategorys.concat(this.skills().filter(skill => skill.meta.SealCategorys).flatMap(skill => skill.meta.SealCategorys.split(",") ) );
+		
 		//装備のメモ欄から取得
 		sealCategorys = sealCategorys.concat(this.equips().flatMap(equip => {
 			if(equip === null){
