@@ -75,3 +75,4 @@ https://www.dropbox.com/sh/30u0e9goi4yd17n/AAAaufl3dIPJPIXRT1-_wFEUa?dl=0
 		return sealCategorys;
 	};
 })();
+//アクターや職業のメモ欄からカテゴリーを取得するのを別の関数にする
