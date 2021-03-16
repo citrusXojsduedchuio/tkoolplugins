@@ -129,6 +129,25 @@ hage
 @text    引数2
 @desc    2つめの引数
 
+@param file
+@text ファイル
+@desc
+画像や音声などのファイルを選択します。ここで選択された
+ファイルは未使用素材削除機能の対象外になります。
+@default
+@dir　./
+@type file
+
+@param loveParamStruct
+@text  アクターと好感度変数のセット
+@desc  アクターと好感度変数のセット
+@type  struct<LoveParamStruct>
+
+@param  parentParam
+@text   親子関係パラメータ
+@desc   親子関係になっているパラメータです
+@parent Switch
+
 @help
 プラグインの詳細な説明です。
 
@@ -138,15 +157,28 @@ hage
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 
 @url
-ここに、プラグインを配布しているURLを記入します
+https://www.dropbox.com/sh/30u0e9goi4yd17n/AAAaufl3dIPJPIXRT1-_wFEUa?dl=0
+*/
+//構造体
+/*~struct~LoveParamStruct:
+@param loveParamActor
+@text  loveParamActor
+@desc  好感度を設定するアクターです
+@type  actor
+
+@param loveParamVariable
+@text  loveParamVariable
+@desc  好感度に使う変数です
+@type  variable
 
 */
 (() => {
+	'use strict'
 	//メソッドの再定義
 	/*
 	const _Class_XXX_method_XXX = Class_XXX.prototype.method_XXX;
 	Class_XXX.prototype.method_XXX = function(args) {
-	  _Class_XXX_method_XXX.apply(this, arguments);
+	  _Class_XXX_method_XXX.call(this, arguments);
 	  //実行内容
 	};
 	
@@ -164,10 +196,10 @@ hage
 	});
 	
 	プラグインパラメータを参照する。取り出したパラメータは文字列になるのでその都度変換が必要
-	let hoge = PluginManager.parameters("CTRS_HogePlugin").hogeParameter;
+	const hoge = PluginManager.parameters("CTRS_HogePlugin").hogeParameter;
 	
 	配列であればJSON.parseを使う
-	let hoge = JSON.parse(PluginManager.parameters("CTRS_HogePlugin").hogeParameter);
+	const hoge = JSON.parse(PluginManager.parameters("CTRS_HogePlugin").hogeParameter);
 	*/
 	
 })();
