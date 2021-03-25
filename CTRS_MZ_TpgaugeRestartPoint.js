@@ -15,7 +15,7 @@
 
 例：
 <TPGaugeRestartPoint:-1>
-スキルを発動した後、タイムプログレスゲージの初期値が-1になる。
+スキルを発動した後、タイムプログレスゲージの再始動値が-1になる。
 
 プラグインコマンドはありません。
 
@@ -23,9 +23,16 @@
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 
 @url
-https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_TpgaugeRestartPoint.js
+https://www.dropbox.com/sh/30u0e9goi4yd17n/AAAaufl3dIPJPIXRT1-_wFEUa?dl=0
 */
 (() => {
+	'use strict'
+	//文字列を数字に変換する。数でないなら、isNaN_Changeの値を返す
+	const NumberEx = function(str,isNaN_Change){
+		const  num = Number(str);
+		return Number.isNaN(num) ? isNaN_Change : num;
+	};
+	
 	//再定義して、tpbReStartPointを追加する
 	const _Game_Battler_initMembers = Game_Battler.prototype.initMembers;
 	Game_Battler.prototype.initMembers = function(){
@@ -41,18 +48,17 @@ https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_TpgaugeRes
 		this._tpbReStartPoint = 0;
 	};
 	
-	const _Game_Action_apply = Game_Action.prototype.apply;
-	Game_Action.prototype.apply = function(target) {
-		_Game_Action_apply.apply(this,arguments);
-		//applyを再定義して処理を追加する
-		this.subject()._tpbReStartPoint = this.itemRestartTime();
+	Game_Battler.prototype.setRestartPoint = function(itemRestartTime){
+		this._tpbReStartPoint = itemRestartTime;
 	};
 	
-	Game_Action.prototype.itemRestartTime = function(){
-		const tpGaugeRestartPoint = Number(this.item().meta.TPGaugeRestartPoint);
-		if(Number.isNaN(tpGaugeRestartPoint) ){
-			return 0;
-		}
-		return tpGaugeRestartPoint;
+	Game_Action.prototype.itemRestartPoint = function(){
+		return NumberEx(this.item().meta.TPGaugeRestartPoint,0);
+	};
+	
+	const _Game_Action_proto_applyGlobal = Game_Action.prototype.applyGlobal;
+	Game_Action.prototype.applyGlobal = function() {
+		_Game_Action_proto_applyGlobal.call(this);
+		this.subject().setRestartPoint(this.itemRestartPoint() );
 	};
 })();
