@@ -52,7 +52,7 @@ Game_Party.prototype.calcDropGold = function(){
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 
 @url
-https://www.dropbox.com/sh/30u0e9goi4yd17n/AAAaufl3dIPJPIXRT1-_wFEUa?dl=0
+https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_GoldDropBattleEnd.js
 */
 (() => {
 	'use strict'
