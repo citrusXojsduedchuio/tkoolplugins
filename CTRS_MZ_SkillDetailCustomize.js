@@ -43,7 +43,7 @@
 このプラグインはWTFPLライセンスで公開します。
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 @url
-https://github.com/citrusXojsduedchuio/tkoolplugins
+https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_SkillDetailCustomize.js
 */
 (() => {
 	'use strict'
