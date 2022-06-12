@@ -21,7 +21,7 @@ x番のIDを持つアクターの顔が戦闘中に使われます。
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 
 @url
-https://github.com/citrusXojsduedchuio/tkoolplugins
+https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_BattleOnlyActor.js
 */
 (() => {
 	'use strict'
