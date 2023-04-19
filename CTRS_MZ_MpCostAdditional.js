@@ -15,15 +15,15 @@ CTRS_MZ_OriginalParameterManager
 @desc
 スキルの消費MPが減算されて0を下回った場合
 最小値を1にするか0にするか選べます
-@on  1
-@off 0
-@default true
-@type    boolean
+@min 0
+@max 1
+@default 1
+@type    number
 
 @help
 このプラグインを使用する場合
-CTRS_MZ_OriginalParameterManagerと
-
+CTRS_MZ_OriginalParameterManagerとCTRS_MZ_MetaTagManagerを
+入れてください。
 
 アクター、職業、装備、ステート、エネミーのメモ欄に<amc:X> (Xは整数)と入力すれば
 その値だけ、スキルを使用するときの消費MPを加減算することができます。
@@ -47,7 +47,7 @@ https://github.com/citrusXojsduedchuio/tkoolplugins
 (() => {
 	'use strict'
 	const ADDITIONAL_MP_COST = "amc";
-	const MPCOST_UNDER       = PluginManager.parameters("CTRS_MZ_MpCostAdditional").MpCostUnder === "true" ? 1 : 0;
+	const MPCOST_UNDER       = Number(PluginManager.parameters("CTRS_MZ_MpCostAdditional").MpCostUnder);
 	Object.defineProperties(Game_BattlerBase.prototype, {
 		//hoge:加算されるオリジナルパラメータ
 		amc: {
