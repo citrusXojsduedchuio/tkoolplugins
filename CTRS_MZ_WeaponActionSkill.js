@@ -20,7 +20,7 @@
 ですができれば、ゲーム内などに名前を表示してくれるとありがたいです。
 
 @url
-https://github.com/citrusXojsduedchuio/tkoolplugins/edit/main/CTRS_MZ_WeaponActionSkill.js
+https://github.com/citrusXojsduedchuio/tkoolplugins/blob/main/CTRS_MZ_WeaponActionSkill.js
 */
 (() => {
 	const _Game_Actor_performAction = Game_Actor.prototype.performAction;
